@@ -1,0 +1,19 @@
+%h1 Listing reminders
+
+%table
+  %tr
+    %th Remind at
+    %th
+    %th
+    %th
+
+  - @reminders.each do |reminder|
+    %tr
+      %td= reminder.remind_at
+      %td= link_to 'Show', reminder
+      %td= link_to 'Edit', edit_reminder_path(reminder)
+      %td= link_to 'Destroy', reminder, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Reminder', new_reminder_path

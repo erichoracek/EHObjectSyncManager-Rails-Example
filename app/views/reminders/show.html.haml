@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Remind at:
+  = @reminder.remind_at
+
+= link_to 'Edit', edit_reminder_path(@reminder)
+\|
+= link_to 'Back', reminders_path

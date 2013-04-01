@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Completed at:
+  = @task.completed_at
+%p
+  %b Due at:
+  = @task.due_at
+%p
+  %b Name:
+  = @task.name
+
+= link_to 'Edit', edit_task_path(@task)
+\|
+= link_to 'Back', tasks_path

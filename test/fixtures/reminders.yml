@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  remind_at: 2013-04-01
+
+two:
+  remind_at: 2013-04-01
