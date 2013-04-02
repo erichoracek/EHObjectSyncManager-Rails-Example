@@ -1,2 +1,2 @@
-collection @reminder
+collection @reminders
 extends 'reminders/show'
