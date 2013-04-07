@@ -1,23 +1,28 @@
-%h1 Listing tasks
-
-%table
-  %tr
-    %th Completed at
-    %th Due at
-    %th Name
-    %th
-    %th
-    %th
-
-  - @tasks.each do |task|
+.container
+  %h1 Tasks
+  %table.styled.index
     %tr
-      %td= task.completed_at
-      %td= task.due_at
-      %td= task.name
-      %td= link_to 'Show', task
-      %td= link_to 'Edit', edit_task_path(task)
-      %td= link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th.center Complete
+      %th Name
+      %th Due At
+      %th Completed At
+      %th Edit
+      %th Delete
+    - if @tasks.count > 0
+      - @tasks.each do |task|
+        %tr
+          %td.center
+            - if task.completed?
+              %i.ss-icon check
+            - else
+              %i.ss-icon close
+          %td= task.name
+          %td= task.due_at_s
+          %td= task.completed_at_s
+          %td= link_to content_tag(:i, "gear", class: "ss-icon"), edit_task_path(task)
+          %td= link_to content_tag(:i, "trash", class: "ss-icon"), task, confirm: 'Are you sure?', method: :delete
+    - else
+      %tr
+        %td{ colspan: 6 } No Tasks
 
-%br
-
-= link_to 'New Task', new_task_path
+  = link_to 'New Task', new_task_path, class: "button"

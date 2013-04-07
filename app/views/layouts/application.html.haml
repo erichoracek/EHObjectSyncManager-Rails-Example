@@ -1,0 +1,12 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    = render 'head'
+  %body
+    = render 'error'
+    .header
+      .container
+        %a{:href => "/"}
+          %p EHObjectSyncManager
+    = yield
+  = render 'footer'

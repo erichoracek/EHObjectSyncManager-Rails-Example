@@ -25,18 +25,29 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @task.save
-    respond_with @task
+    respond_with @task do |f|
+      f.html { redirect_to tasks_path }
+    end
   end
 
   def update
     @task = Task.find(params[:id])
     @task.update_attributes(params[:task])
-    respond_with @task
+    respond_with @task do |f|
+      f.html { redirect_to tasks_path }
+    end
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    begin
+      @task = Task.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render nothing:true, status: :not_found
+      return
+    end
     @task.destroy
-    respond_with @task
+    respond_with @task do |f|
+      f.html { redirect_to tasks_path }
+    end
   end
 end

@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require ss-standard
+ *= require_tree .
+ */
+
+$phone-width: 480px
+$tablet-width: 960px
+$footer-height: 100px
+$header-height: 90px
+
+@import 'bourbon'
+@import 'neat'
+@import 'typography'
+
+*
+  margin: 0
+
+html, body
+  height: 100%
+  width: 100%
+
+body
+  margin: 0
+  padding: 0
+  background: darken(white, 5%)
+  > .error
+    display: none
+
+.container
+  @include outer-container
+  overflow: hidden
+  padding: 0 40px
+  @include media(max-width $phone-width)
+    padding: 0 20px
+
+.header 
+  height: $header-height
+  width: 100%
+  background: black
+  margin-bottom: 40px
+  p
+    color: white
+    line-height: 3.0
+    font-size: 30px
+    font-weight: bold
+  .navigation
+    text-align: right
+    a
+      display: inline-block
+      margin: 0 0 0 20px
+      color: white
+      font-weight: bold
+      line-height: $header-height
+      &:hover
+        color: #ccc
+
+table.styled
+  width: 100%
+  margin: 20px 0
+  border-collapse: collapse
+  tr
+    background: white
+    color: black
+    td, th
+      text-align: left
+      line-height: 1.0
+      &:last-child, &:nth-last-child(2)
+        text-align: center
+      a       
+        text-decoration: none
+      .ss-icon
+        position: relative
+        top: 3px
+    th
+      padding: 15px
+      color: white
+      background: black
+      font-weight: bold
+    td, td a
+      padding: 10px 15px
+      color: black
+      background: white
+    td
+      height: 45px
+    a.publish
+      padding-left: 0
+    td.center
+      text-align: center
+    th.center
+      text-align: center
+
+
+input[type=submit], a.button, button.button
+  color: white
+  text-shadow: none
+  background: black
+  padding: 9px 15px 11px 15px
+  margin: 0
+  line-height: 1.0
+  font-weight: bold
+  border: 1px solid black
+  display: inline-block
+  text-decoration: none
+  box-sizing: border-box
+  @include media(max-width $phone-width)
+    @include span-columns(12)
+  &:hover
