@@ -12,8 +12,3 @@
 %link{:href => "/assets/images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}
 
 = javascript_include_tag "application"
-
-%noscript
-  = stylesheet_link_tag "noscript"
-= surround "<!--[if lte IE 8]>".html_safe, "<![endif]-->".html_safe do
-  = stylesheet_link_tag "ie"
