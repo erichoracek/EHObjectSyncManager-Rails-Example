@@ -1,13 +1,13 @@
 class Task < ActiveRecord::Base
-  attr_accessible :completed_at, :due_at, :name
+  attr_accessible :completed_at, :due_at, :name, :completed
   has_many :reminders
 
-  def completed?
+  def completed
     self.completed_at?
   end  
 
   def completed=(completed)
-    self.completed_at = completed ? DateTime.now : nil
+    self.completed_at = (completed == true) ? DateTime.now : nil
   end
 
   def due_at_s

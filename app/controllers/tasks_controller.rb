@@ -32,6 +32,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    @task.completed = params[:task][:completed]
     @task.update_attributes(params[:task])
     respond_with @task do |f|
       f.html { redirect_to tasks_path }

@@ -12,7 +12,7 @@
       - @tasks.each do |task|
         %tr
           %td.center
-            - if task.completed?
+            - if task.completed
               %i.ss-icon check
             - else
               %i.ss-icon close
