@@ -6,7 +6,10 @@
     = render 'error'
     .header
       .container
-        %a{:href => "/"}
+        %a.title{:href => "/"}
           %p EHObjectSyncManager
+        .navigation
+          = link_to "Tasks", tasks_path
+          = link_to "Reminders", reminders_path
     = yield
   = render 'footer'
