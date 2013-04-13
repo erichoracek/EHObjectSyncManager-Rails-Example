@@ -5,7 +5,7 @@
       %th.center Complete
       %th Name
       %th Due At
-      %th Completed At
+      %th Reminders
       %th Edit
       %th Delete
     - if @tasks.count > 0
@@ -18,7 +18,12 @@
               %i.ss-icon close
           %td= task.name
           %td= task.due_at_s
-          %td= task.completed_at_s
+          - if task.reminders.count > 0
+            %td 
+              - task.reminders.each do |reminder|
+                %p= "#{reminder.remind_at_s}"
+          - else
+            %td None
           %td= link_to content_tag(:i, "gear", class: "ss-icon"), edit_task_path(task)
           %td= link_to content_tag(:i, "trash", class: "ss-icon"), task, confirm: 'Are you sure?', method: :delete
     - else
