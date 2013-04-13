@@ -1,8 +1,5 @@
-= simple_form_for(@reminder) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :remind_at
-  .form-inputs
-    = f.association :task
-  .form-actions
-    = f.button :submit
+= simple_form_for @reminder do |f|
+  .field
+    = f.input :remind_at, label: 'Remind At'
+  .field
+    = f.submit yield :submit

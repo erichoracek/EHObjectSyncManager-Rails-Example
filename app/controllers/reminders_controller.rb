@@ -35,12 +35,21 @@ class RemindersController < ApplicationController
   def update
     @reminder = Reminder.find(params[:id])
     @reminder.update_attributes(params[:reminder])
-    respond_with @reminder
+    respond_with @reminder do |f|
+      f.html { redirect_to reminders_path }
+    end
   end
 
   def destroy
-    @reminder = Reminder.find(params[:id])
+    begin
+      @reminder = Reminder.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render nothing:true, status: :not_found
+      return
+    end
     @reminder.destroy
-    respond_with @reminder
+    respond_with @reminder do |f|
+      f.html { redirect_to reminders_path }
+    end
   end
 end
