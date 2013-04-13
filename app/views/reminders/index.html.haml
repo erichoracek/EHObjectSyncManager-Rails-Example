@@ -1,19 +1,23 @@
-%h1 Listing reminders
-
-%table
-  %tr
-    %th Remind at
-    %th
-    %th
-    %th
-
-  - @reminders.each do |reminder|
+.container
+  %h1 Tasks
+  %table.styled.index
     %tr
-      %td= reminder.remind_at
-      %td= link_to 'Show', reminder
-      %td= link_to 'Edit', edit_reminder_path(reminder)
-      %td= link_to 'Destroy', reminder, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Remind At
+      %th Task
+      %th Edit
+      %th Delete
+    - if @reminders.count > 0
+      - @reminders.each do |reminder|
+        %tr
+          %td= reminder.remind_at_s
+          - if reminder.task
+            %td= reminder.task.name
+          - else
+            %td None
+          %td= link_to content_tag(:i, "gear", class: "ss-icon"), edit_reminder_path(reminder)
+          %td= link_to content_tag(:i, "trash", class: "ss-icon"), reminder, confirm: 'Are you sure?', method: :delete
+    - else
+      %tr
+        %td{ colspan: 4 } No Reminders
 
-%br
-
-= link_to 'New Reminder', new_reminder_path
+  = link_to 'New Reminder', new_reminder_path, class: "button"
