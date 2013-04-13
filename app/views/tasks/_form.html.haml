@@ -1,9 +1,5 @@
 = simple_form_for @task do |f|
-  .field
-    = f.input :name
-  .field
-    = f.input :due_at, label: 'Due Date'
-  .field
-    = f.input :completed, as: :select
-  .field
-    = f.submit yield :submit
+  = f.input :name
+  = f.input :due_at, label: 'Due Date'
+  = f.input :completed, as: :select
+  = f.submit yield :submit

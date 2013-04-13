@@ -1,5 +1,4 @@
 = simple_form_for @reminder do |f|
-  .field
-    = f.input :remind_at, label: 'Remind At'
-  .field
-    = f.submit yield :submit
+  = f.input :remind_at, label: 'Remind At'
+  = f.association :task
+  = f.submit yield :submit
