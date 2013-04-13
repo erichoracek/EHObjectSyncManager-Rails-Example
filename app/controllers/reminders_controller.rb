@@ -3,7 +3,11 @@ class RemindersController < ApplicationController
   respond_to :html, :json
 
   def index
-    @reminders = Reminder.all
+    if params.has_key? :task_id
+      @reminders = Reminder.find_all_by_task_id params[:task_id]
+    else
+      @reminders = Reminder.all
+    end
     respond_with @reminders
   end
 
