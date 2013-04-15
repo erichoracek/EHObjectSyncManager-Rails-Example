@@ -72,13 +72,11 @@ table.styled
   margin: 20px 0
   border-collapse: collapse
   tr
+    vertical-align: top
     background: white
     color: black
     td, th
       text-align: left
-      line-height: 1.0
-      &:last-child, &:nth-last-child(2)
-        text-align: center
       a       
         text-decoration: none
       .ss-icon
@@ -90,24 +88,19 @@ table.styled
       background: black
       font-weight: bold
     td, td a
-      vertical-align: top
-      padding: 20px 15px 10px 15px
+      padding: 15px
       color: black
-      background: white
+      line-height: 24px
     p
       color: black
-      background: white 
-      margin-bottom: 10px
-      &:last-child
-        margin-bottom: 0px
-    td
-      height: 45px
-    a.publish
-      padding-left: 0
-    td.center
-      text-align: center
-    th.center
-      text-align: center
+      line-height: 24px
+  td.empty
+    text-align: center
+    font-weight: bold
+  td.center
+    text-align: center
+  th.center
+    text-align: center
 
 
 input[type=submit], a.button, button.button

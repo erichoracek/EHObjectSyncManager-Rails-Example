@@ -6,8 +6,8 @@
       %th Name
       %th Due At
       %th Reminders
-      %th Edit
-      %th Delete
+      %th.center Edit
+      %th.center Delete
     - if @tasks.count > 0
       - @tasks.each do |task|
         %tr
@@ -24,10 +24,10 @@
                 %p= "#{reminder.remind_at_s}"
           - else
             %td None
-          %td= link_to content_tag(:i, "gear", class: "ss-icon"), edit_task_path(task)
-          %td= link_to content_tag(:i, "trash", class: "ss-icon"), task, confirm: 'Are you sure?', method: :delete
+          %td.center= link_to content_tag(:i, "gear", class: "ss-icon"), edit_task_path(task)
+          %td.center= link_to content_tag(:i, "trash", class: "ss-icon"), task, confirm: 'Are you sure?', method: :delete
     - else
       %tr
-        %td{ colspan: 6 } No Tasks
+        %td.empty{ colspan: 6 } No Tasks
 
   = link_to 'New Task', new_task_path, class: "button"
